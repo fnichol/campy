@@ -28,7 +28,7 @@ $ gem install campy
 First create a `campfire.yml` file in your home directory:
 
 ```bash
-cat <<CAMPFIRE_YAML > $HOME/.campfire.yml
+$ cat <<CAMPFIRE_YAML > $HOME/.campfire.yml
 :account: mysubdomain
 :token: mytoken123
 :room: House of Hubot
@@ -41,8 +41,8 @@ Campy comes with the `campy` command so you can send messages from the
 command line:
 
 ```bash
-campy speak "Campy says yello"
-campy play ohmy
+$ campy speak "Campy says yello"
+$ campy play ohmy
 ```
 
 ### <a name="usage-ruby"> Ruby Library
