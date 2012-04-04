@@ -35,7 +35,7 @@ $ cat <<CAMPFIRE_YAML > $HOME/.campfire.yml
 CAMPFIRE_YAML
 ```
 
-### <a name="usage-bin"> campy Command
+### <a name="usage-bin"></a> campy Command
 
 Campy comes with the `campy` command so you can send messages from the
 command line:
@@ -45,7 +45,7 @@ $ campy speak "Campy says yello"
 $ campy play ohmy
 ```
 
-### <a name="usage-ruby"> Ruby Library
+### <a name="usage-ruby"></a> Ruby Library
 
 There's not much to the API; create a `Campy::Room` and go:
 
