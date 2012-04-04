@@ -1,0 +1,38 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
+require 'campy'
+require 'yaml'
+
+def options
+  yaml_file = File.expand_path(ENV['CAMPFIRE_YAML_FILE'] || '~/.campfire.yml')
+  if !File.exists?(yaml_file)
+    abort "File '#{yaml_file}' does not exist with campfire configuration."
+  end
+  YAML.load_file(yaml_file)
+end
+
+def usage
+  <<-USAGE.gsub(/^ {4}/, '')
+
+    Usage
+
+      campy <action> <message>
+
+    Actions
+
+      help  - Display CLI help (this output)
+      speak - Speak a message into the campfire room
+      play  - Play a sound into the campfire room
+
+  USAGE
+end
+
+if ARGV.first == "help"
+  puts usage
+  exit
+end
+
+abort usage if ARGV.empty? || !%w{speak play}.include?(ARGV.first)
+
+Campy::Room.new(options).send(ARGV.shift, ARGV.shift)
