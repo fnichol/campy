@@ -52,8 +52,8 @@ There's not much to the API; create a `Campy::Room` and go:
 ```ruby
 require 'campy'
 
-campy = Campy::Room.new(:account => "mysubdomain", :token => "mytoken123",
-  :room => "House of Hubot")
+campy = Campy::Room.new(:account => "mysubdomain",
+  :token => "mytoken123", :room => "House of Hubot")
 campy.speak "Campy says yello"
 campy.play "ohmy"
 ```
@@ -64,7 +64,8 @@ Why not use the `campfire.yml` config? Let's do that:
 require 'campy'
 require 'yaml'
 
-campy = Campy::Room.new(YAML.load_file(File.expand_path("~/.campfire.yml")))
+campy = Campy::Room.new(YAML.load_file(
+  File.expand_path("~/.campfire.yml")))
 campy.speak "Campy says yello"
 campy.play "ohmy"
 ```
