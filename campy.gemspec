@@ -4,9 +4,9 @@ require File.expand_path('../lib/campy/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Fletcher Nichol"]
   gem.email         = ["fnichol@nichol.ca"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q{Small Campfire client using Net::HTTP.}
+  gem.summary       = gem.description
+  gem.homepage      = "http://fnichol.github.com/campy/"
 
   gem.files         = `git ls-files`.split($\)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
