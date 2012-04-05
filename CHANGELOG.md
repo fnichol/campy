@@ -1,4 +1,7 @@
-## 0.1.1 (unreleased)
+## 0.1.2 (unreleased)
+
+
+## 0.1.1 (April 5, 2012)
 
 ### New features
 
