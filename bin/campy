@@ -52,6 +52,5 @@ when "help"
   puts usage
   exit
 else
-  puts "campy <#{action}> <#{message}>"
-  # Campy::Room.new(options).send(action, message)
+  Campy::Room.new(options).send(action, message)
 end
