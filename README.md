@@ -42,6 +42,7 @@ command line:
 
 ```bash
 $ campy speak "Campy says yello"
+$ campy paste "Long pastes are long"
 $ campy play ohmy
 ```
 
@@ -49,6 +50,7 @@ Or pipe in your message:
 
 ```bash
 $ echo "Campy tries to honor unix conventions" | campy speak
+$ cat ~/stackdump.log | campy paste
 $ echo ohmy | campy play
 ```
 
@@ -62,6 +64,7 @@ require 'campy'
 campy = Campy::Room.new(:account => "mysubdomain",
   :token => "mytoken123", :room => "House of Hubot")
 campy.speak "Campy says yello"
+campy.paste "Long pastes are long"
 campy.play "ohmy"
 ```
 
@@ -74,6 +77,7 @@ require 'yaml'
 campy = Campy::Room.new(YAML.load_file(
   File.expand_path("~/.campfire.yml")))
 campy.speak "Campy says yello"
+campy.paste "Long pastes are long"
 campy.play "ohmy"
 ```
 
