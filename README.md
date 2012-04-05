@@ -45,6 +45,13 @@ $ campy speak "Campy says yello"
 $ campy play ohmy
 ```
 
+Or pipe in your message:
+
+```bash
+$ echo "Campy tries to honor unix conventions" | campy speak
+$ echo ohmy | campy play
+```
+
 ### <a name="usage-ruby"></a> Ruby Library
 
 There's not much to the API; create a `Campy::Room` and go:

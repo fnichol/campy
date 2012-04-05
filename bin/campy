@@ -4,14 +4,6 @@ $:.unshift File.join(File.dirname(__FILE__), '..', 'lib')
 require 'campy'
 require 'yaml'
 
-def options
-  yaml_file = File.expand_path(ENV['CAMPFIRE_YAML_FILE'] || '~/.campfire.yml')
-  if !File.exists?(yaml_file)
-    abort "File '#{yaml_file}' does not exist with campfire configuration."
-  end
-  YAML.load_file(yaml_file)
-end
-
 def usage
   <<-USAGE.gsub(/^ {4}/, '')
 
@@ -28,11 +20,38 @@ def usage
   USAGE
 end
 
-if ARGV.first == "help"
-  puts usage
-  exit
+def options
+  yaml_file = File.expand_path(ENV['CAMPFIRE_YAML_FILE'] || '~/.campfire.yml')
+  if !File.exists?(yaml_file)
+    abort "File '#{yaml_file}' does not exist with campfire configuration."
+  end
+  YAML.load_file(yaml_file)
 end
 
-abort usage if ARGV.empty? || !%w{speak play}.include?(ARGV.first)
+def action
+  @action ||= begin
+    abort usage if ARGV.empty?
+    action = ARGV.shift
+    abort usage if !%w{speak play help}.include?(action)
+    action
+  end
+end
 
-Campy::Room.new(options).send(ARGV.shift, ARGV.shift)
+def message
+  @message ||= begin
+    if ARGV.empty?
+      ARGF.read.chomp
+    else
+      ARGV.shift
+    end
+ end
+end
+
+case action
+when "help"
+  puts usage
+  exit
+else
+  puts "campy <#{action}> <#{message}>"
+  # Campy::Room.new(options).send(action, message)
+end
