@@ -1,14 +1,19 @@
 # -*- encoding: utf-8 -*-
-require 'simplecov'
-SimpleCov.adapters.define 'gem' do
-  command_name 'Specs'
 
-  add_filter '/spec/'
+# Currently there no support for SimpleCov in Rubinus, see:
+# http://donttreadonme.co.uk/rubinius/2012/02/22.html#message_243
+unless RUBY_ENGINE == "rbx"
+  require 'simplecov'
+  SimpleCov.adapters.define 'gem' do
+    command_name 'Specs'
 
-  add_group 'Binaries', '/bin/'
-  add_group 'Libraries', '/lib/'
+    add_filter '/spec/'
+
+    add_group 'Binaries', '/bin/'
+    add_group 'Libraries', '/lib/'
+  end
+  SimpleCov.start 'gem'
 end
-SimpleCov.start 'gem'
 
 require 'minitest/autorun'
 require 'webmock/minitest'
