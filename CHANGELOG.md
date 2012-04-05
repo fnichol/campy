@@ -1,4 +1,11 @@
-## 0.1.2 (unreleased)
+## 0.1.3.dev (unreleased)
+
+
+## 0.1.2 (April 5, 2012)
+
+#### Bug fixes
+
+* Add paste action to bin/campy. ([@fnichol][])
 
 
 ## 0.1.1 (April 5, 2012)
