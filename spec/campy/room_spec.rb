@@ -1,6 +1,8 @@
 # -*- encoding: utf-8 -*-
 require 'simplecov'
 SimpleCov.adapters.define 'gem' do
+  command_name 'Specs'
+
   add_filter '/spec/'
 
   add_group 'Binaries', '/bin/'
@@ -53,6 +55,13 @@ describe Campy::Room do
            :body => {:message => {:body => msg, :type => type}}).
       to_return(:status => 201, :headers => {},
                 :body => fixture("speak").sub(/@@MESSAGE@@/, msg))
+  end
+
+  def stub_speak_not_found!(msg, type = 'TextMessage')
+    stub_request(:post, "https://yepyep:X@zubzub.campfirenow.com/room/123456/speak.json").
+      with(:headers => {'Content-Type' => 'application/json'},
+           :body => {:message => {:body => msg, :type => type}}).
+      to_return(:status => 404, :headers => {}, :body => "Not Found")
   end
 
   def stub_speak_error!(error)
@@ -132,6 +141,12 @@ describe Campy::Room do
       subject.speak("talking about talking").must_equal true
     end
 
+    it "raises a ConnectionError when API does not return HTTP 201" do
+      stub_speak_not_found!("nope")
+
+      proc { subject.speak "nope" }.must_raise(Campy::Room::ConnectionError)
+    end
+
     WRAPPED_ERRORS.each do |error|
       it "wraps #{error} and raises a ConnectionError" do
         stub_speak_error!(error)
@@ -162,6 +177,12 @@ describe Campy::Room do
       subject.paste("big ol long paste\nwith newlines").must_equal true
     end
 
+    it "raises a ConnectionError when API does not return HTTP 201" do
+      stub_speak_not_found!("nope", "PasteMessage")
+
+      proc { subject.paste "nope" }.must_raise(Campy::Room::ConnectionError)
+    end
+
     WRAPPED_ERRORS.each do |error|
       it "wraps #{error} and raises a ConnectionError" do
         stub_speak_error!(error)
@@ -190,6 +211,12 @@ describe Campy::Room do
       stub = stub_speak!("tada", "SoundMessage")
 
       subject.play("tada").must_equal true
+    end
+
+    it "raises a ConnectionError when API does not return HTTP 201" do
+      stub_speak_not_found!("nope", "SoundMessage")
+
+      proc { subject.play "nope" }.must_raise(Campy::Room::ConnectionError)
     end
 
     WRAPPED_ERRORS.each do |error|
