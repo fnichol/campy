@@ -55,6 +55,16 @@ module Campy
       send_message(msg)
     end
 
+    # Public: Pastes a message into the campfire room.
+    #
+    # msg - A String message.
+    #
+    # Returns true if message is delivered.
+    # Raises ConnectionError if an HTTP error occurs.
+    def paste(msg)
+      send_message(msg, 'PasteMessage')
+    end
+
     # Public: Plays a sound into the campfire room.
     #
     # sound - A String representing the sound.

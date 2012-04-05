@@ -133,6 +133,37 @@ describe Campy::Room do
     end
   end
 
+  describe "#paste" do
+    let(:subject) { Campy::Room.new(opts) }
+
+    before do
+      # stub out #room_id since we don't care about this API call
+      def subject.room_id ; 123456 ; end
+    end
+
+    it "calls the paste API with a message" do
+      stub = stub_speak!("big ol long paste\nwith newlines", "PasteMessage")
+      subject.paste "big ol long paste\nwith newlines"
+
+      assert_requested(stub)
+    end
+
+    it "returns true when message is delivered" do
+      stub = stub_speak!("big ol long paste\nwith newlines", "PasteMessage")
+
+      subject.paste("big ol long paste\nwith newlines").must_equal true
+    end
+
+    WRAPPED_ERRORS.each do |error|
+      it "wraps #{error} and raises a ConnectionError" do
+        stub_speak_error!(error)
+
+        proc { subject.paste "nope" }.must_raise(
+          Campy::Room::ConnectionError)
+      end
+    end
+  end
+
   describe "#play" do
     let(:subject) { Campy::Room.new(opts) }
 
