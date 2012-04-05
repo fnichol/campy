@@ -15,6 +15,7 @@ def usage
 
       help  - Display CLI help (this output)
       speak - Speak a message into the campfire room
+      paste - Paste a message into the campfire room
       play  - Play a sound into the campfire room
 
   USAGE
@@ -28,12 +29,14 @@ def options
   YAML.load_file(yaml_file)
 end
 
+def actions
+  %w{speak paste play}
+end
+
 def action
   @action ||= begin
     abort usage if ARGV.empty?
-    action = ARGV.shift
-    abort usage if !%w{speak play help}.include?(action)
-    action
+    ARGV.shift
   end
 end
 
@@ -48,9 +51,11 @@ def message
 end
 
 case action
+when *actions
+  Campy::Room.new(options).send(action, message)
 when "help"
   puts usage
   exit
 else
-  Campy::Room.new(options).send(action, message)
+  abort usage
 end
