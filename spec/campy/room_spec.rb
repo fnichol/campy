@@ -2,7 +2,7 @@
 
 # Currently there no support for SimpleCov in Rubinus, see:
 # http://donttreadonme.co.uk/rubinius/2012/02/22.html#message_243
-unless RUBY_ENGINE == "rbx"
+unless defined?(RUBY_ENGINE) && RUBY_ENGINE == "rbx"
   require 'simplecov'
   SimpleCov.adapters.define 'gem' do
     command_name 'Specs'
