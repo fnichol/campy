@@ -2,6 +2,7 @@
 
 ### New features
 
+* Add Campy::Room#paste message type. ([@fnichol][])
 * Allow message to be read from STDIN in bin/campy. ([@fnichol][])
 
 
