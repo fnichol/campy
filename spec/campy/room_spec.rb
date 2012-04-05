@@ -1,4 +1,13 @@
 # -*- encoding: utf-8 -*-
+require 'simplecov'
+SimpleCov.adapters.define 'gem' do
+  add_filter '/spec/'
+
+  add_group 'Binaries', '/bin/'
+  add_group 'Libraries', '/lib/'
+end
+SimpleCov.start 'gem'
+
 require 'minitest/autorun'
 require 'webmock/minitest'
 require 'campy/room'
