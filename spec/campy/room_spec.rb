@@ -59,6 +59,7 @@ describe Campy::Room do
   describe "#initialize" do
     it "takes a hash of campfire configuration" do
       room = Campy::Room.new(opts)
+
       room.account.must_equal 'zubzub'
       room.room.must_equal    'myroom'
     end
@@ -66,6 +67,7 @@ describe Campy::Room do
     it "defaults to SSL mode enabled" do
       opts.delete(:ssl)
       room = Campy::Room.new(opts)
+
       room.ssl.must_equal true
     end
   end
@@ -75,29 +77,27 @@ describe Campy::Room do
 
     it "fetches the room id from the API" do
       stub_rooms!
+
       subject.room_id.must_equal 666666
     end
 
     it "raises NotFound if no room is found" do
       stub_rooms_no_room!
 
-      proc { subject.room_id }.must_raise(
-        Campy::Room::NotFound)
+      proc { subject.room_id }.must_raise(Campy::Room::NotFound)
     end
 
     it "raises ConnectionError if the token is invalid" do
       stub_rooms_invalid_token!
 
-      proc { subject.room_id }.must_raise(
-        Campy::Room::ConnectionError)
+      proc { subject.room_id }.must_raise(Campy::Room::ConnectionError)
     end
 
     WRAPPED_ERRORS.each do |error|
       it "wraps #{error} and raises a ConnectionError" do
         stub_rooms_error!(error)
 
-        proc { subject.room_id }.must_raise(
-          Campy::Room::ConnectionError)
+        proc { subject.room_id }.must_raise(Campy::Room::ConnectionError)
       end
     end
   end
@@ -127,8 +127,7 @@ describe Campy::Room do
       it "wraps #{error} and raises a ConnectionError" do
         stub_speak_error!(error)
 
-        proc { subject.speak "nope" }.must_raise(
-          Campy::Room::ConnectionError)
+        proc { subject.speak "nope" }.must_raise(Campy::Room::ConnectionError)
       end
     end
   end
@@ -158,8 +157,7 @@ describe Campy::Room do
       it "wraps #{error} and raises a ConnectionError" do
         stub_speak_error!(error)
 
-        proc { subject.paste "nope" }.must_raise(
-          Campy::Room::ConnectionError)
+        proc { subject.paste "nope" }.must_raise(Campy::Room::ConnectionError)
       end
     end
   end
@@ -189,8 +187,7 @@ describe Campy::Room do
       it "wraps #{error} and raises a ConnectionError" do
         stub_speak_error!(error)
 
-        proc { subject.play "tada" }.must_raise(
-          Campy::Room::ConnectionError)
+        proc { subject.play "tada" }.must_raise(Campy::Room::ConnectionError)
       end
     end
   end
