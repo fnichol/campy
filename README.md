@@ -68,6 +68,18 @@ campy.paste "Long pastes are long"
 campy.play "ohmy"
 ```
 
+If you know the room ID and would prefer to use that instead of the name:
+
+```ruby
+require 'campy'
+
+campy = Campy::Room.new(:account => "mysubdomain",
+  :token => "mytoken123", :room_id => "12345")
+campy.speak "Campy says yello"
+campy.paste "Long pastes are long"
+campy.play "ohmy"
+```
+
 Why not use the `campfire.yml` config? Let's do that:
 
 ```ruby
