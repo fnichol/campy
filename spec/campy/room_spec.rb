@@ -98,6 +98,12 @@ describe Campy::Room do
   describe "#room_id" do
     let(:subject) { Campy::Room.new(opts) }
 
+    it "returns the room_id set in the initializer if it is provided" do
+      room_with_id = Campy::Room.new(opts.merge(:room_id => 654321))
+
+      room_with_id.room_id.must_equal 654321
+    end
+
     it "fetches the room id from the API" do
       stub_rooms!
 

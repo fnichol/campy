@@ -31,7 +31,7 @@ module Campy
     def initialize(options = {})
       options = { :ssl => true }.merge(options)
 
-      [:account, :room, :token, :ssl].each do |option|
+      [:account, :room_id, :room, :token, :ssl].each do |option|
         instance_variable_set "@#{option}", options[option]
       end
     end
