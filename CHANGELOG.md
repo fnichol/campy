@@ -1,4 +1,12 @@
-## 0.1.3.dev (unreleased)
+## 0.1.4.dev (unreleased)
+
+
+## 0.1.3 (July 10, 2012)
+
+### New features
+
+* Pull request [#1](https://github.com/fnichol/campy/pull/1): Add option to
+  use Campfire room id rather than room name. ([@mvandenbeuken][])
 
 
 ## 0.1.2 (April 5, 2012)
@@ -21,3 +29,4 @@
 The initial release.
 
 [@fnichol]: https://github.com/fnichol
+[@mvandenbeuken]: https://github.com/mvandenbeuken
