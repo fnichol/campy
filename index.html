@@ -36,7 +36,8 @@
         <span class="blc"></span><span class="trc"></span>
         </div>
         <article class="markdown-body">
-          <p>Build Status <a href="http://travis-ci.org/fnichol/campy"><img src="https://secure.travis-ci.org/fnichol/campy.png" alt="Build Status"></a> <a href="https://gemnasium.com/fnichol/campy"><img src="https://gemnasium.com/fnichol/campy.png" alt="Dependency Status"></a></p>
+          <p><a href="http://travis-ci.org/fnichol/campy"><img src="https://secure.travis-ci.org/fnichol/campy.png" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/fnichol/campy"><img src="https://codeclimate.com/badge.png" alt="Code Climate"></a></p>
 
 <p>Tiny Campfire Ruby client so you can get on with it. It's implemented on top of
 <code>Net::HTTP</code> and only requires the <code>multi_json</code> gem for Ruby compatibilities.</p>
@@ -46,19 +47,13 @@
 
 <p>Add this line to your application's Gemfile:</p>
 
-<div class="highlight">
-<pre><span class="n">gem</span> <span class="s1">'campy'</span>
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="n">gem</span> <span class="s1">'campy'</span>
+</pre></div>
 
 <p>And then execute:</p>
 
-<div class="highlight">
-<pre><span class="nv">$ </span>bundle
-</pre>
-</div>
-
+<div class="highlight"><pre><span class="nv">$ </span>bundle
+</pre></div>
 
 <p>Or install it yourself as:</p>
 
@@ -70,15 +65,12 @@
 
 <p>First create a <code>campfire.yml</code> file in your home directory:</p>
 
-<div class="highlight">
-<pre><span class="nv">$ </span>cat <span class="s">&lt;&lt;CAMPFIRE_YAML &gt; $HOME/.campfire.yml</span>
+<div class="highlight"><pre><span class="nv">$ </span>cat <span class="s">&lt;&lt;CAMPFIRE_YAML &gt; $HOME/.campfire.yml</span>
 <span class="s">:account: mysubdomain</span>
 <span class="s">:token: mytoken123</span>
 <span class="s">:room: House of Hubot</span>
 <span class="s">CAMPFIRE_YAML</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h3>
 <a name="usage-bin"></a> campy Command</h3>
@@ -86,59 +78,46 @@
 <p>Campy comes with the <code>campy</code> command so you can send messages from the
 command line:</p>
 
-<div class="highlight">
-<pre><span class="nv">$ </span>campy speak <span class="s2">"Campy says yello"</span>
+<div class="highlight"><pre><span class="nv">$ </span>campy speak <span class="s2">"Campy says yello"</span>
 <span class="nv">$ </span>campy paste <span class="s2">"Long pastes are long"</span>
 <span class="nv">$ </span>campy play ohmy
-</pre>
-</div>
-
+</pre></div>
 
 <p>Or pipe in your message:</p>
 
-<div class="highlight">
-<pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"Campy tries to honor unix conventions"</span> | campy speak
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"Campy tries to honor unix conventions"</span> | campy speak
 <span class="nv">$ </span>cat ~/stackdump.log | campy paste
 <span class="nv">$ </span><span class="nb">echo </span>ohmy | campy play
-</pre>
-</div>
-
+</pre></div>
 
 <h3>
 <a name="usage-ruby"></a> Ruby Library</h3>
 
 <p>There's not much to the API; create a <code>Campy::Room</code> and go:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'campy'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'campy'</span>
 
 <span class="n">campy</span> <span class="o">=</span> <span class="no">Campy</span><span class="o">::</span><span class="no">Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:account</span> <span class="o">=&gt;</span> <span class="s2">"mysubdomain"</span><span class="p">,</span>
   <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="s2">"mytoken123"</span><span class="p">,</span> <span class="ss">:room</span> <span class="o">=&gt;</span> <span class="s2">"House of Hubot"</span><span class="p">)</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">speak</span> <span class="s2">"Campy says yello"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">paste</span> <span class="s2">"Long pastes are long"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">play</span> <span class="s2">"ohmy"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>If you know the room ID and would prefer to use that instead of the name:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'campy'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'campy'</span>
 
 <span class="n">campy</span> <span class="o">=</span> <span class="no">Campy</span><span class="o">::</span><span class="no">Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:account</span> <span class="o">=&gt;</span> <span class="s2">"mysubdomain"</span><span class="p">,</span>
   <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="s2">"mytoken123"</span><span class="p">,</span> <span class="ss">:room_id</span> <span class="o">=&gt;</span> <span class="s2">"12345"</span><span class="p">)</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">speak</span> <span class="s2">"Campy says yello"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">paste</span> <span class="s2">"Long pastes are long"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">play</span> <span class="s2">"ohmy"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <p>Why not use the <code>campfire.yml</code> config? Let's do that:</p>
 
-<div class="highlight">
-<pre><span class="nb">require</span> <span class="s1">'campy'</span>
+<div class="highlight"><pre><span class="nb">require</span> <span class="s1">'campy'</span>
 <span class="nb">require</span> <span class="s1">'yaml'</span>
 
 <span class="n">campy</span> <span class="o">=</span> <span class="no">Campy</span><span class="o">::</span><span class="no">Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">YAML</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span>
@@ -146,9 +125,7 @@ command line:</p>
 <span class="n">campy</span><span class="o">.</span><span class="n">speak</span> <span class="s2">"Campy says yello"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">paste</span> <span class="s2">"Long pastes are long"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">play</span> <span class="s2">"ohmy"</span>
-</pre>
-</div>
-
+</pre></div>
 
 <h2>
 <a name="development"></a> Development</h2>
@@ -182,7 +159,7 @@ example:</p>
     </div>
     <footer>
       <div class="owner">
-      <p><a href="https://github.com/fnichol" class="avatar"><img src="https://secure.gravatar.com/avatar/9891e8299426fb9b6e361b84b3155a2d?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-140.png" width="48" height="48"/></a> <a href="https://github.com/fnichol">fnichol</a> maintains <a href="https://github.com/fnichol/campy">Campy</a></p>
+      <p><a href="https://github.com/fnichol" class="avatar"><img src="https://secure.gravatar.com/avatar/9891e8299426fb9b6e361b84b3155a2d?s=30&amp;d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png" width="48" height="48"/></a> <a href="https://github.com/fnichol">fnichol</a> maintains <a href="https://github.com/fnichol/campy">Campy</a></p>
 
 
       </div>
