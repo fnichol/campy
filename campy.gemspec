@@ -15,6 +15,8 @@ Gem::Specification.new do |gem|
   gem.require_paths = ["lib"]
   gem.version       = Campy::VERSION
 
+  spec.required_ruby_version = ">= 1.9.2"
+
   gem.add_dependency "multi_json", "~> 1.0"
 
   gem.add_development_dependency "minitest", "< 5.0"
