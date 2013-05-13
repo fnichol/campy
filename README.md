@@ -1,7 +1,8 @@
 # <a name="title"></a> Campy
 
 [![Build Status](https://secure.travis-ci.org/fnichol/campy.png)](http://travis-ci.org/fnichol/campy)
-[![Code Climate](https://codeclimate.com/badge.png)](https://codeclimate.com/github/fnichol/campy)
+[![Dependency Status](https://gemnasium.com/fnichol/campy.png)](https://gemnasium.com/fnichol/campy)
+[![Code Climate](https://codeclimate.com/github/fnichol/campy.png)](https://codeclimate.com/github/fnichol/campy)
 
 Tiny Campfire Ruby client so you can get on with it. It's implemented on top of
 `Net::HTTP` and only requires the `multi_json` gem for Ruby compatibilities.
