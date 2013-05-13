@@ -17,7 +17,7 @@ Gem::Specification.new do |gem|
 
   gem.add_dependency "multi_json", "~> 1.0"
 
-  gem.add_development_dependency "minitest", "~> 2.12.0"
+  gem.add_development_dependency "minitest", "< 5.0"
   gem.add_development_dependency "webmock", "~> 1.8.5"
   gem.add_development_dependency "simplecov", "~> 0.6.1"
 end
