@@ -5,7 +5,7 @@
 [![Code Climate](https://codeclimate.com/github/fnichol/campy.png)](https://codeclimate.com/github/fnichol/campy)
 
 Tiny Campfire Ruby client so you can get on with it. It's implemented on top of
-`Net::HTTP` and only requires the `multi_json` gem for Ruby compatibilities.
+`Net::HTTP` with **no** external dependencies for Ruby compatibilities.
 
 ## <a name="installation"></a> Installation
 

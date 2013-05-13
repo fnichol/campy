@@ -5,7 +5,7 @@ Gem::Specification.new do |gem|
   gem.authors       = ["Fletcher Nichol"]
   gem.email         = ["fnichol@nichol.ca"]
   gem.description   = %q{Tiny Campfire Ruby client so you can get on with it.}
-  gem.summary       = %q{Tiny Campfire Ruby client so you can get on with it. It's implemented on top of Net::HTTP and only requires the multi_json gem for Ruby compatibilities.}
+  gem.summary       = %q{Tiny Campfire Ruby client so you can get on with it. It's implemented on top of Net::HTTP with no external dependencies for Ruby compatibilities.}
   gem.homepage      = "http://fnichol.github.com/campy/"
 
   gem.files         = `git ls-files`.split($\)
