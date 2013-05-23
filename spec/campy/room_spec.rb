@@ -7,6 +7,7 @@ unless defined?(RUBY_ENGINE) && RUBY_ENGINE == "rbx"
   SimpleCov.adapters.define 'gem' do
     command_name 'Specs'
 
+    add_filter '.gem/'
     add_filter '/spec/'
 
     add_group 'Binaries', '/bin/'
