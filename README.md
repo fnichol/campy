@@ -1,8 +1,9 @@
-# <a name="title"></a> Campy
+# <a name="title"></a> Campy: A Tiny Zero-Dependency Campfire Ruby client
 
+[![Gem Version](https://badge.fury.io/rb/campy.png)](http://badge.fury.io/rb/campy)
 [![Build Status](https://secure.travis-ci.org/fnichol/campy.png)](http://travis-ci.org/fnichol/campy)
-[![Dependency Status](https://gemnasium.com/fnichol/campy.png)](https://gemnasium.com/fnichol/campy)
 [![Code Climate](https://codeclimate.com/github/fnichol/campy.png)](https://codeclimate.com/github/fnichol/campy)
+[![Dependency Status](https://gemnasium.com/fnichol/campy.png)](https://gemnasium.com/fnichol/campy)
 
 Tiny Campfire Ruby client so you can get on with it. It's implemented on top of
 `Net::HTTP` with **no** external dependencies for Ruby compatibilities.
