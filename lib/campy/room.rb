@@ -1,6 +1,6 @@
 # -*- encoding: utf-8 -*-
 require 'net/https'
-require 'multi_json'
+require 'json'
 
 module Campy
   class Room
@@ -107,7 +107,7 @@ module Campy
 
         case response
         when Net::HTTPOK
-          find_room_in_json(MultiJson.decode(response.body))
+          find_room_in_json(JSON.parse(response.body))
         else
           raise ConnectionError
         end
@@ -124,8 +124,7 @@ module Campy
     def send_message(msg, type = 'TextMessage')
       connect do |http|
         request = http_request(:post, "/room/#{room_id}/speak.json")
-        request.body = MultiJson.encode(
-          { :message => { :body => msg, :type => type } })
+        request.body = { :message => { :body => msg, :type => type } }.to_json
         response = http.request(request)
 
         case response
