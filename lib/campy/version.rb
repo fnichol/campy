@@ -1,5 +1,5 @@
 # -*- encoding: utf-8 -*-
 
 module Campy
-  VERSION = "0.1.4.dev"
+  VERSION = "1.0.0"
 end
