@@ -12,7 +12,7 @@
   <script type="text/javascript" src="javascripts/script.js"></script>
 
   <title>Campy</title>
-  <meta name="description" content="Tiny Campfire Ruby client so you can get on with it">
+  <meta name="description" content="A tiny zero-dependency Campfire Ruby client so you can get on with it">
 
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -25,7 +25,7 @@
       <h1 class="title">Campy</h1>
     </header>
     <div id="container">
-      <p class="tagline">Tiny Campfire Ruby client so you can get on with it</p>
+      <p class="tagline">A tiny zero-dependency Campfire Ruby client so you can get on with it</p>
       <div id="main" role="main">
         <div class="download-bar">
         <div class="inner">
@@ -36,11 +36,13 @@
         <span class="blc"></span><span class="trc"></span>
         </div>
         <article class="markdown-body">
-          <p><a href="http://travis-ci.org/fnichol/campy"><img src="https://secure.travis-ci.org/fnichol/campy.png" alt="Build Status"></a>
-<a href="https://codeclimate.com/github/fnichol/campy"><img src="https://codeclimate.com/badge.png" alt="Code Climate"></a></p>
+          <p><a href="http://badge.fury.io/rb/campy"><img src="https://badge.fury.io/rb/campy.png" alt="Gem Version"></a>
+<a href="http://travis-ci.org/fnichol/campy"><img src="https://secure.travis-ci.org/fnichol/campy.png" alt="Build Status"></a>
+<a href="https://codeclimate.com/github/fnichol/campy"><img src="https://codeclimate.com/github/fnichol/campy.png" alt="Code Climate"></a>
+<a href="https://gemnasium.com/fnichol/campy"><img src="https://gemnasium.com/fnichol/campy.png" alt="Dependency Status"></a></p>
 
 <p>Tiny Campfire Ruby client so you can get on with it. It's implemented on top of
-<code>Net::HTTP</code> and only requires the <code>multi_json</code> gem for Ruby compatibilities.</p>
+<code>Net::HTTP</code> with <strong>no</strong> external dependencies for Ruby compatibilities.</p>
 
 <h2>
 <a name="installation"></a> Installation</h2>
@@ -97,7 +99,7 @@ command line:</p>
 
 <div class="highlight"><pre><span class="nb">require</span> <span class="s1">'campy'</span>
 
-<span class="n">campy</span> <span class="o">=</span> <span class="no">Campy</span><span class="o">::</span><span class="no">Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:account</span> <span class="o">=&gt;</span> <span class="s2">"mysubdomain"</span><span class="p">,</span>
+<span class="n">campy</span> <span class="o">=</span> <span class="ss">Campy</span><span class="p">:</span><span class="ss">:Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:account</span> <span class="o">=&gt;</span> <span class="s2">"mysubdomain"</span><span class="p">,</span>
   <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="s2">"mytoken123"</span><span class="p">,</span> <span class="ss">:room</span> <span class="o">=&gt;</span> <span class="s2">"House of Hubot"</span><span class="p">)</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">speak</span> <span class="s2">"Campy says yello"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">paste</span> <span class="s2">"Long pastes are long"</span>
@@ -108,7 +110,7 @@ command line:</p>
 
 <div class="highlight"><pre><span class="nb">require</span> <span class="s1">'campy'</span>
 
-<span class="n">campy</span> <span class="o">=</span> <span class="no">Campy</span><span class="o">::</span><span class="no">Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:account</span> <span class="o">=&gt;</span> <span class="s2">"mysubdomain"</span><span class="p">,</span>
+<span class="n">campy</span> <span class="o">=</span> <span class="ss">Campy</span><span class="p">:</span><span class="ss">:Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="ss">:account</span> <span class="o">=&gt;</span> <span class="s2">"mysubdomain"</span><span class="p">,</span>
   <span class="ss">:token</span> <span class="o">=&gt;</span> <span class="s2">"mytoken123"</span><span class="p">,</span> <span class="ss">:room_id</span> <span class="o">=&gt;</span> <span class="s2">"12345"</span><span class="p">)</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">speak</span> <span class="s2">"Campy says yello"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">paste</span> <span class="s2">"Long pastes are long"</span>
@@ -120,7 +122,7 @@ command line:</p>
 <div class="highlight"><pre><span class="nb">require</span> <span class="s1">'campy'</span>
 <span class="nb">require</span> <span class="s1">'yaml'</span>
 
-<span class="n">campy</span> <span class="o">=</span> <span class="no">Campy</span><span class="o">::</span><span class="no">Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">YAML</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span>
+<span class="n">campy</span> <span class="o">=</span> <span class="ss">Campy</span><span class="p">:</span><span class="ss">:Room</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="no">YAML</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span>
   <span class="no">File</span><span class="o">.</span><span class="n">expand_path</span><span class="p">(</span><span class="s2">"~/.campfire.yml"</span><span class="p">)))</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">speak</span> <span class="s2">"Campy says yello"</span>
 <span class="n">campy</span><span class="o">.</span><span class="n">paste</span> <span class="s2">"Long pastes are long"</span>
